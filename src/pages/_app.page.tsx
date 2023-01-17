@@ -1,5 +1,6 @@
 import { Roboto } from '@next/font/google'
 import type { AppProps } from 'next/app'
+import { SessionProvider } from 'next-auth/react'
 import { globalStyles } from '../styles/global'
 
 globalStyles()
@@ -9,10 +10,12 @@ const roboto = Roboto({
   style: ['normal'],
 })
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps: {session, ...pageProps} }: AppProps) {
   return (
     <div className={roboto.className}>
-      <Component {...pageProps} />
+      <SessionProvider session={session}>
+        <Component {...pageProps} />
+      </SessionProvider>
     </div>
   )
 }
