@@ -1,0 +1,8 @@
+INICIAR O PRISMA
+-yarn prisma init -datasource-provider SQLite
+
+CRIAR AS TABELAS
+-yarn prisma migrate dev
+
+RODA LOCAL PARA VISUALIZAR O BANCO
+-yarn prisma studio

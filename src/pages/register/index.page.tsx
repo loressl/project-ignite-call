@@ -6,6 +6,8 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import { AxiosError } from "axios";
+import { api } from "../../lib/axios";
 
 const registerFormSchema = z.object({
     username: z
@@ -34,14 +36,28 @@ export default function Register() {
 
     const router = useRouter()
 
-    useEffect(()=>{
-        if(router.query.username){
+    useEffect(() => {
+        if (router.query.username) {
             setValue('username', String(router.query.username))
         }
-    },[router.query?.username, setValue])
+    }, [router.query?.username, setValue])
 
     async function handleRegister(data: RegisterFormData) {
+        try {
+            await api.post('/users', {
+                name: data.name,
+                username: data.username,
+            })
 
+            //await router.push('/register/connect-calendar')
+        } catch (err) {
+            if (err instanceof AxiosError && err?.response?.data?.message) {
+                alert(err.response.data.message)
+                return
+            }
+
+            console.error(err)
+        }
     }
 
     return (
