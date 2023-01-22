@@ -52,7 +52,7 @@ export const CalendarBody = styled("table", {
   width: "100%",
   fontFamily: "$default",
   borderSpacing: "0.25rem",
-  tableLayout: "fixed",
+  tableLayout: "fixed", // permite que os elementos da tabela respondam a responsividade
 
   "thead th": {
     color: "$gray200",
