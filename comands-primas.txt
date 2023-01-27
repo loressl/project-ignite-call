@@ -6,3 +6,7 @@ CRIAR AS TABELAS
 
 RODA LOCAL PARA VISUALIZAR O BANCO
 -yarn prisma studio
+
+MUDANDO DE BANCO
+-Ao mudar de SQLITE para MYSQL deve apagar o BD, a pasta migrations e mudar o provider do squema do prisma para mysql
+e rodar tudo do zero
