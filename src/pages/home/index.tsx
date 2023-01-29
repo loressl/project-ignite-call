@@ -6,7 +6,6 @@ import previewImage from '../../assets/app-preview.png'
 import { ClaimUsernameForm } from './components/ClaimUsernameForm.tsx'
 import { NextSeo } from 'next-seo'
 
-
 export default function Home() {
   return (
     <>

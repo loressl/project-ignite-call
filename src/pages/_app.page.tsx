@@ -15,12 +15,14 @@ const roboto = Roboto({
   style: ['normal'],
 })
 
-export default function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
+export default function App({
+  Component,
+  pageProps: { session, ...pageProps },
+}: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
       <div className={roboto.className}>
         <SessionProvider session={session}>
-
           <DefaultSeo
             openGraph={{
               type: 'website',
@@ -33,7 +35,6 @@ export default function App({ Component, pageProps: { session, ...pageProps } }:
           <Component {...pageProps} />
         </SessionProvider>
       </div>
-
     </QueryClientProvider>
   )
 }
